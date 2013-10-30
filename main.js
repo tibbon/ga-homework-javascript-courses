@@ -1,44 +1,62 @@
 // Application namespace
 var CourseApp = {};
 
-// =========== Student ==============
+// =========== STUDENT ==============
 CourseApp.Student = function(name) {
                  // a student object properties
 }
+
+// This will give all the students access to a method .generate_html
+// which you can use to render each student to the page indvidiually
 CourseApp.Student.prototype.generate_html = function(){ ...}
 
 
-// =========== Teacher ==============
+// ===========  TEACHER ==============
 CourseApp.Teacher = function(name) {
                  // a teacher object properties
 }
+// This will give all the teachers access to a method .generate_html
+// which you can use to render each student to the page indvidiually
 CourseApp.Teacher.prototype.generate_html = function(){ ...}
 
-// =========== Course ==============
+// =========== COURSE ==============
 CourseApp.Course = function(name) {
                  // a course object properties
 }
 
-// This will generate *all* of the html for a specific course
+// This will give all the courses access to a method .generate_html
+// which you can use to render each student to the page indvidiually
 CourseApp.Course.prototype.generate_html = function(){ ...}
-CourseApp.Course.prototype.add_teacher = function(teacher){ ...}
-CourseApp.Course.prototype.add_student = function(student){ ...}
 
 
-// Create a course
 
-// Create a teacher and add it to the above course.
 
-// Create a couple of students and add it to the above course.
 
-// Generate the HTML for this course
+///////////////////////////////////////////////////////////
+//                                                       //
+//            BONUS STAGE BELOW                          //
+//                                                       //
+///////////////////////////////////////////////////////////
 
-CourseApp.course_names = ['psych', 'algebra'];
-CourseApp.add_course = function(e){
-  // Add a course,can get the names from course_names above!
+
+// The following 3 methods will run ONLY when you click the 
+// 'Add Foo' button in the HTML. Ignore what the 'e' is in each
+// of the methods
+
+// For example, if I click the 'Add Teacher' button on the page
+// the 'CourseApp.add_teacher' method will run
+
+CourseApp.add_teacher = function(e){
+  // Prompt the user for information to add a teacher
+  // Append this teacher to the list of teachers on the page
 }
 
-CourseApp.student_names = ['bob', 'alice', 'tom', 'mike', 'joe', 'frank', 'ed'];
+CourseApp.add_course = function(e){
+  // Prompt the user for information to add a course
+  // Append this course to the list of courses on the page
+}
+
 CourseApp.add_student = function(e){
-  // Add a student, can get the names from student_names above!
+  // Prompt the user for information to add a student
+  // Append this student to the list of students on the page
 }
