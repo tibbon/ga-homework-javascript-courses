@@ -24,7 +24,6 @@ CourseApp.Student.prototype.generate_html = function(people){
 	document.getElementById('students').innerHTML = students;
 }
 
-CourseApp.Student.prototype.generate_html(people);
 // ===========  TEACHER ==============
 CourseApp.Teacher = function(name) {
            this.name = name;
@@ -48,7 +47,7 @@ CourseApp.Teacher.prototype.generate_html = function(teachers){
 	document.getElementById('teachers').innerHTML = teacherHTML;
 }
 
-CourseApp.Teacher.prototype.generate_html(teachers);
+
 
 // =========== COURSE ==============
 CourseApp.Course = function(name) {
@@ -72,7 +71,7 @@ CourseApp.Course.prototype.generate_html = function(){
 	}
 	document.getElementById('courses').innerHTML = courseHTML;
 }
-CourseApp.Course.prototype.generate_html(courses);
+
 // ///////////////////////////////////////////////////////////
 // //                                                       //
 // //            BONUS STAGE BELOW                          //
@@ -87,17 +86,40 @@ CourseApp.Course.prototype.generate_html(courses);
 // // For example, if I click the 'Add Teacher' button on the page
 // // the 'CourseApp.add_teacher' method will run
 
-// CourseApp.add_teacher = function(e){
-//   // Prompt the user for information to add a teacher
-//   // Append this teacher to the list of teachers on the page
-// }
+CourseApp.add_teacher = function(e){
+  // Prompt the user for information to add a teacher
+  var name = prompt("What is the teacher's name?");
+  // Append this teacher to the list of teachers on the page
+  new_teacher = new CourseApp.Teacher(name);
+  teachers.push(new_teacher);
+}
 
-// CourseApp.add_course = function(e){
-//   // Prompt the user for information to add a course
-//   // Append this course to the list of courses on the page
-// }
 
-// CourseApp.add_student = function(e){
-//   // Prompt the user for information to add a student
-//   // Append this student to the list of students on the page
-// }
+//// ADD COURSE 
+CourseApp.add_course = function(e){
+  // Prompt the user for information to add a course
+  var name = prompt("What is the course name?")
+  // Append this course to the list of courses on the page
+  new_course = new CourseApp.Course(name);
+  courses.push(new_course);
+}
+
+
+
+// STUDENT
+CourseApp.add_student = function(e){
+  // Prompt the user for information to add a student
+  var name = prompt("What is the student name?")
+  // Append this student to the list of students on the page
+  new_student = new CourseApp.Student(name);
+  people.push(new_student);
+}
+
+CourseApp.add_teacher();
+CourseApp.Teacher.prototype.generate_html(teachers);
+
+CourseApp.add_course();
+CourseApp.Course.prototype.generate_html(courses);
+
+CourseApp.add_student();
+CourseApp.Student.prototype.generate_html(people);
