@@ -31,11 +31,27 @@ CourseApp.Student.prototype.generate_html(students);
 CourseApp.Teacher = function(name) {
   this.name = name;
 };
+
+knightly   = new CourseApp.Student("Mrs. Knightly");
+phil       = new CourseApp.Student("Dr. Phil");
+krugman    = new CourseApp.Student("Mr. Krugman");
+paul       = new CourseApp.Student("Prof. Paul");
+teachers   = [knightly, phil, krugman, paul];
+
 // This will give all the teachers access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Teacher.prototype.generate_html = function() {
+CourseApp.Teacher.prototype.generate_html = function(teachers) {
+var teacherHTML = document.getElementById('teachers').innerHTML,
+  max = teachers.length, i = 0;
 
+  for (; i < max; ) {
+    teacherHTML += "<li class='teacher'>" + teachers[i].name + "</li>";
+    i += 1;
+  }
+  document.getElementById('teachers').innerHTML = teacherHTML;
 };
+
+CourseApp.Teacher.prototype.generate_html(teachers);
 
 // =========== COURSE ==============
 CourseApp.Course = function(name) {
