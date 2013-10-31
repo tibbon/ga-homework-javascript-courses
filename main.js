@@ -47,8 +47,6 @@ CourseApp.Teacher.prototype.generate_html = function(teachers){
 	document.getElementById('teachers').innerHTML = teacherHTML;
 }
 
-
-
 // =========== COURSE ==============
 CourseApp.Course = function(name) {
            this.name = name;
@@ -80,7 +78,6 @@ CourseApp.Course.prototype.generate_html = function(){
 
 
 // ADD TEACHER
-
 CourseApp.add_teacher = function(e){
   // Prompt the user for information to add a teacher
   var name = prompt("What is the teacher's name?");
@@ -90,7 +87,6 @@ CourseApp.add_teacher = function(e){
   teacherHTML += "<li class='teacher-list'>" + new_teacher.name + "</li>";
   document.getElementById('teachers').innerHTML = teacherHTML;
 }
-
 
 //// ADD COURSE 
 CourseApp.add_course = function(e){
@@ -103,8 +99,6 @@ CourseApp.add_course = function(e){
   document.getElementById('courses').innerHTML = courseHTML;
 }
 
-
-
 // ADD STUDENT
 CourseApp.add_student = function(e){
   // Prompt the user for information to add a student
@@ -116,6 +110,7 @@ CourseApp.add_student = function(e){
   document.getElementById('students').innerHTML = studentHTML;
 }
 
+// buttons to add student, courses, and teachers
 var student_button = document.getElementById("add-student");
 student_button.addEventListener("click", CourseApp.add_student, false);
 
@@ -125,6 +120,8 @@ course_button.addEventListener("click", CourseApp.add_course, false);
 var teacher_button = document.getElementById("add-teacher");
 teacher_button.addEventListener("click", CourseApp.add_teacher, false);
 
+
+// generate original list of teachers, students, and courses
 CourseApp.Student.prototype.generate_html(people);
 
 CourseApp.Teacher.prototype.generate_html(teachers);
