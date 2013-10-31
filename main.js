@@ -58,18 +58,26 @@ CourseApp.Course = function(name) {
   this.name = name;
 };
 
+english   = new CourseApp.Course("English");
+calculus  = new CourseApp.Course("Calculus");
+compsci   = new CourseApp.Course("Computer Science");
+history   = new CourseApp.Course("History");
+courses   = [english, calculus, compsci, history];
+
 // This will give all the courses access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Course.prototype.generate_html = function() {
-  var course_index = ['Biology', 'Chemistry', 'Physics', 'English', 'History', 'Calculus', 'Algebra', 'Trignometry', 'Computer Science'],
-  courseHTML = document.getElementById('courses').innerHTML,
-  max = course_index.length, i = 0, ul = createElement('ul');
+CourseApp.Course.prototype.generate_html = function(courses) {
+var courseHTML = document.getElementById('courses').innerHTML,
+  max = courses.length, i = 0;
 
-
-  courseHTML.appendChild(ul);
+  for (; i < max; ) {
+    courseHTML += "<li class='course'>" + courses[i].name + "</li>";
+    i += 1;
+  }
+  document.getElementById('courses').innerHTML = courseHTML;
 };
 
-CourseApp.Course();
+CourseApp.Course.prototype.generate_html(courses);
 
 
 
