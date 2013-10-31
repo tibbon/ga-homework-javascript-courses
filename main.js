@@ -92,6 +92,7 @@ CourseApp.add_teacher = function(e){
   // Append this teacher to the list of teachers on the page
   new_teacher = new CourseApp.Teacher(name);
   teachers.push(new_teacher);
+   CourseApp.Teacher.prototype.generate_html(teachers);
 }
 
 
@@ -115,8 +116,13 @@ CourseApp.add_student = function(e){
   people.push(new_student);
 }
 
-CourseApp.add_teacher();
-CourseApp.Teacher.prototype.generate_html(teachers);
+
+
+var teacher_button = document.getElementById("add-teacher");
+teacher_button.addEventListener("click", CourseApp.add_teacher,false);
+
+// CourseApp.add_teacher();
+// CourseApp.Teacher.prototype.generate_html(teachers);
 
 CourseApp.add_course();
 CourseApp.Course.prototype.generate_html(courses);
