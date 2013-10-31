@@ -2,22 +2,39 @@
 var CourseApp = {};
 
 // =========== STUDENT ==============
-CourseApp.Student = function(name) {
-                 // a student object properties
+// a student object properties
+CourseApp.Student = function(name, course) {
+				this.name = name;
+
 }
 
 // This will give all the students access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Student.prototype.generate_html = function(){ ...}
+CourseApp.Student.prototype.generate_html = function(){ 
 
+var students = ['Amal', 'Zahra', 'Sara', 'Abdi'], 
+	 studentTML = document.getElementById('students').innerHTML,
+max = students.length, 
+i = 0; 
+
+for(; i < max;) {
+			studentTML += "<div id='students'>" + students[i] + "</div>";
+			i += 1;
+		}
+		document.getElementById('students').innerHTML = studentTML;
+}
+
+CourseApp.Student.prototype.generate_html();
 
 // ===========  TEACHER ==============
-CourseApp.Teacher = function(name) {
-                 // a teacher object properties
+CourseApp.Teacher = function(name) { // a teacher object properties
+           this.name = name;
 }
 // This will give all the teachers access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Teacher.prototype.generate_html = function(){ ...}
+CourseApp.Teacher.prototype.generate_html = function(){ 
+
+}
 
 // =========== COURSE ==============
 CourseApp.Course = function(name) {
@@ -26,7 +43,9 @@ CourseApp.Course = function(name) {
 
 // This will give all the courses access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Course.prototype.generate_html = function(){ ...}
+CourseApp.Course.prototype.generate_html = function(){ 
+
+}
 
 
 
@@ -60,3 +79,5 @@ CourseApp.add_student = function(e){
   // Prompt the user for information to add a student
   // Append this student to the list of students on the page
 }
+
+
