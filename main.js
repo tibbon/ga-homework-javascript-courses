@@ -3,7 +3,7 @@ var CourseApp = {};
 
 // =========== STUDENT ==============
 // a student object properties
-CourseApp.Student = function(name, course) {
+CourseApp.Student = function(name) {
 				this.name = name;
 
 }
@@ -34,10 +34,24 @@ CourseApp.Teacher = function(name) { // a teacher object properties
 // which you can use to render each student to the page indvidiually
 CourseApp.Teacher.prototype.generate_html = function(){ 
 
+var teachers = ['Billy', 'Neesha', 'Samara', 'Geesha'], 
+	  teacherTML = document.getElementById('teachers').innerHTML,
+max = teachers.length, 
+i = 0; 
+
+for(; i < max;) {
+			teacherTML += "<div id='teachers'>" + teachers[i] + "</div>";
+			i += 1;
+		}
+		document.getElementById('teachers').innerHTML = teacherTML;
 }
+
+CourseApp.Teacher.prototype.generate_html();
+
 
 // =========== COURSE ==============
 CourseApp.Course = function(name) {
+	this.name = name; 
                  // a course object properties
 }
 
@@ -45,9 +59,19 @@ CourseApp.Course = function(name) {
 // which you can use to render each student to the page indvidiually
 CourseApp.Course.prototype.generate_html = function(){ 
 
+var courses = ['physics', 'chemistry', 'math', 'computer science'], 
+courseTML = document.getElementById('courses').innerHTML,
+max = courses.length, 
+i = 0; 
+
+for(; i < max;) {
+			courseTML += "<div id='courses'>" + courses[i] + "</div>";
+			i += 1;
+		}
+		document.getElementById('courses').innerHTML = courseTML;
 }
 
-
+CourseApp.Course.prototype.generate_html();
 
 
 
@@ -76,8 +100,11 @@ CourseApp.add_course = function(e){
 }
 
 CourseApp.add_student = function(e){
+
+name = prompt('Whats your students name?');
+students.push(new CourseApp.Student(name));
   // Prompt the user for information to add a student
   // Append this student to the list of students on the page
 }
 
-
+CourseApp.add_student();
