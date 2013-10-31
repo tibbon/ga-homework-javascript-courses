@@ -1,33 +1,43 @@
 // Application namespace
-var CourseApp = {};
+var CourseApp = {
+  // If I'm setting attributes on an object, using semicolons
+  // I don't need a var. These are 'attributes' not variables. 
+  students: [],
+  courses: [],
+  teachers: [],
+  render_collection: function(collection_name) {
+    var i = 0,
+        array_length;
 
-// =========== STUDENT ==============
-CourseApp.Student = function(name) {
-                 // a student object properties
-}
+    array_length = this[collection_name].length
+    for(;i<array_length;) {
+      this[collection_name][i].render_item(collection_name);
+      i = i + 1;
+    };
+  }
+};
 
-// This will give all the students access to a method .generate_html
-// which you can use to render each student to the page indvidiually
-CourseApp.Student.prototype.generate_html = function(){ ...}
+CourseApp.LearningThing = function() {};
+CourseApp.LearningThing.prototype.render_item = function(collection_name) {
+  var html = "";
+  html = this.generate_html();
+  document.getElementById(collection_name + '-list').innerHTML += html;
+};
 
 
-// ===========  TEACHER ==============
-CourseApp.Teacher = function(name) {
-                 // a teacher object properties
-}
-// This will give all the teachers access to a method .generate_html
-// which you can use to render each student to the page indvidiually
-CourseApp.Teacher.prototype.generate_html = function(){ ...}
+// Doesn't execute until the body is done loading
+window.onload = function() {
+  CourseApp.students.push(new CourseApp.Student("Stacy"));
+  CourseApp.students.push(new CourseApp.Student("Bobby"));
+  CourseApp.teachers.push(new CourseApp.Teacher("David_d_1"));
+  CourseApp.teachers.push(new CourseApp.Teacher("Tom_t_1"));
+  CourseApp.courses.push(new CourseApp.Course("6.001"));
+  CourseApp.courses.push(new CourseApp.Course("6.002"));
 
-// =========== COURSE ==============
-CourseApp.Course = function(name) {
-                 // a course object properties
-}
-
-// This will give all the courses access to a method .generate_html
-// which you can use to render each student to the page indvidiually
-CourseApp.Course.prototype.generate_html = function(){ ...}
-
+  CourseApp.render_collection("students");
+  CourseApp.render_collection("teachers");
+  CourseApp.render_collection("courses");
+};
 
 
 
@@ -47,16 +57,20 @@ CourseApp.Course.prototype.generate_html = function(){ ...}
 // the 'CourseApp.add_teacher' method will run
 
 CourseApp.add_teacher = function(e){
-  // Prompt the user for information to add a teacher
-  // Append this teacher to the list of teachers on the page
-}
+  var teacher_name = "", teacher;
+  teacher_name = prompt("Name of teacher");
+  console.log(teacher_name);
+  teacher = new CourseApp.Teacher(teacher_name);
+  CourseApp.teachers.push(teacher);
+  teacher.render_item("teachers");
+};
 
 CourseApp.add_course = function(e){
   // Prompt the user for information to add a course
   // Append this course to the list of courses on the page
-}
+};
 
 CourseApp.add_student = function(e){
   // Prompt the user for information to add a student
   // Append this student to the list of students on the page
-}
+};

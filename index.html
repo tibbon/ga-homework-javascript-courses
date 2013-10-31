@@ -5,20 +5,31 @@
     <title>Course Registration</title>
   </head>
   <body>
-    <a id='add-teacher' onClick='add_teacher();return false;'>Add Teacher</a>
-    <a id='add-course' onClick='add_course();return false;'>Add Course</a>
-    <a id='add-student'onClick='add_student();return false;'>Add Student</a>
+    <a id='add-teacher' onClick='CourseApp.add_teacher();return false;'>Add Teacher</a>
+    <a id='add-course' onClick='CourseApp.add_course();return false;'>Add Course</a>
+    <a id='add-student'onClick='CourseApp.add_student();return false;'>Add Student</a>
     <div>
       <div id='courses'>
+        <h2>Courses</h2>
+        <ul id='courses-list'>
+        </ul>
       </div> 
 
       <div id='teachers'>
+        <h2>Teachers</h2>
+        <ul id='teachers-list'>
+        </ul>
       </div>
 
       <div id='students'>
+        <h2>Students</h2>
+        <ul id='students-list'>
+        </ul>
       </div>
     </div>
-    <script src='main.js'>
-    </script>
+    <script src='main.js'></script>
+    <script src='students.js'></script>
+    <script src='teachers.js'></script>
+    <script src='courses.js'></script>
   </body>
 </html>
