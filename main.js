@@ -3,32 +3,57 @@ var CourseApp = {};
 
 // =========== STUDENT ==============
 CourseApp.Student = function(name) {
-                 // a student object properties
-}
+  this.name = name;
+};
+
+sheldon  = new CourseApp.Student("Sheldon Doe");
+sally    = new CourseApp.Student("Sally Mander");
+satoshi  = new CourseApp.Student("Satoshi Nakamoto");
+sara     = new CourseApp.Student("Sara Nader");
+students = [sheldon, sally, satoshi, sara];
 
 // This will give all the students access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Student.prototype.generate_html = function(){ ...}
+CourseApp.Student.prototype.generate_html = function(students) {
+  var studentHTML = document.getElementById('students').innerHTML,
+  max = students.length, i = 0;
 
+  for (; i < max; ) {
+    studentHTML += "<li class='student'>" + students[i].name + "</li>";
+    i += 1;
+  }
+  document.getElementById('students').innerHTML = studentHTML;
+};
+
+CourseApp.Student.prototype.generate_html(students);
 
 // ===========  TEACHER ==============
 CourseApp.Teacher = function(name) {
-                 // a teacher object properties
-}
+  this.name = name;
+};
 // This will give all the teachers access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Teacher.prototype.generate_html = function(){ ...}
+CourseApp.Teacher.prototype.generate_html = function() {
+
+};
 
 // =========== COURSE ==============
 CourseApp.Course = function(name) {
-                 // a course object properties
-}
+  this.name = name;
+};
 
 // This will give all the courses access to a method .generate_html
 // which you can use to render each student to the page indvidiually
-CourseApp.Course.prototype.generate_html = function(){ ...}
+CourseApp.Course.prototype.generate_html = function() {
+  var course_index = ['Biology', 'Chemistry', 'Physics', 'English', 'History', 'Calculus', 'Algebra', 'Trignometry', 'Computer Science'],
+  courseHTML = document.getElementById('courses').innerHTML,
+  max = course_index.length, i = 0, ul = createElement('ul');
 
 
+  courseHTML.appendChild(ul);
+};
+
+CourseApp.Course();
 
 
 
@@ -49,14 +74,14 @@ CourseApp.Course.prototype.generate_html = function(){ ...}
 CourseApp.add_teacher = function(e){
   // Prompt the user for information to add a teacher
   // Append this teacher to the list of teachers on the page
-}
+};
 
 CourseApp.add_course = function(e){
   // Prompt the user for information to add a course
   // Append this course to the list of courses on the page
-}
+};
 
 CourseApp.add_student = function(e){
   // Prompt the user for information to add a student
   // Append this student to the list of students on the page
-}
+};
