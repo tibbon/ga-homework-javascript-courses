@@ -79,20 +79,16 @@ CourseApp.Course.prototype.generate_html = function(){
 // ///////////////////////////////////////////////////////////
 
 
-// // The following 3 methods will run ONLY when you click the 
-// // 'Add Foo' button in the HTML. Ignore what the 'e' is in each
-// // of the methods
-
-// // For example, if I click the 'Add Teacher' button on the page
-// // the 'CourseApp.add_teacher' method will run
+// ADD TEACHER
 
 CourseApp.add_teacher = function(e){
   // Prompt the user for information to add a teacher
   var name = prompt("What is the teacher's name?");
   // Append this teacher to the list of teachers on the page
   new_teacher = new CourseApp.Teacher(name);
-  teachers.push(new_teacher);
-   CourseApp.Teacher.prototype.generate_html(teachers);
+  teacherHTML = document.getElementById('teachers').innerHTML;
+  teacherHTML += "<li class='teacher-list'>" + new_teacher.name + "</li>";
+  document.getElementById('teachers').innerHTML = teacherHTML;
 }
 
 
@@ -102,30 +98,38 @@ CourseApp.add_course = function(e){
   var name = prompt("What is the course name?")
   // Append this course to the list of courses on the page
   new_course = new CourseApp.Course(name);
-  courses.push(new_course);
+  courseHTML = document.getElementById('courses').innerHTML;
+  courseHTML += "<li class='course-list'>" + new_course.name + "</li>";
+  document.getElementById('courses').innerHTML = courseHTML;
 }
 
 
 
-// STUDENT
+// ADD STUDENT
 CourseApp.add_student = function(e){
   // Prompt the user for information to add a student
   var name = prompt("What is the student name?")
   // Append this student to the list of students on the page
   new_student = new CourseApp.Student(name);
-  people.push(new_student);
+  studentHTML = document.getElementById('students').innerHTML;
+  studentHTML += "<li class='student-list'>" + new_student.name + "</li>";
+  document.getElementById('students').innerHTML = studentHTML;
 }
 
+var student_button = document.getElementById("add-student");
+student_button.addEventListener("click", CourseApp.add_student, false);
 
+var course_button = document.getElementById("add-course");
+course_button.addEventListener("click", CourseApp.add_course, false);
 
 var teacher_button = document.getElementById("add-teacher");
-teacher_button.addEventListener("click", CourseApp.add_teacher,false);
+teacher_button.addEventListener("click", CourseApp.add_teacher, false);
 
-// CourseApp.add_teacher();
-// CourseApp.Teacher.prototype.generate_html(teachers);
+CourseApp.Student.prototype.generate_html(people);
 
-CourseApp.add_course();
+CourseApp.Teacher.prototype.generate_html(teachers);
+
 CourseApp.Course.prototype.generate_html(courses);
 
-CourseApp.add_student();
-CourseApp.Student.prototype.generate_html(people);
+// CourseApp.add_student();
+// CourseApp.Student.prototype.generate_html(people);
