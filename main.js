@@ -20,7 +20,9 @@ CourseApp.Student.prototype.generate_html = function(){
 CourseApp.Student.prototype.generate_html();
 
 // ===========  TEACHER ==============
-CourseApp.Teacher = function(name) { 
+CourseApp.Teacher = function(teacher) { 
+	this.teacher=teacher;
+
 };
 
 CourseApp.Teacher.prototype.generate_html = function(){ 
@@ -67,26 +69,26 @@ CourseApp.Course.prototype.generate_html();
 
 CourseApp.add_teacher = function(e){
 
-	name = prompt('Whats your teachers name?');
-	teachers.push(new CourseApp.Teacher(name));
+	teacher = prompt('Whats your teachers name?');
+	teachers.push(new CourseApp.Teacher(teacher));
 };
 
-CourseApp.add_teacher(e);
+CourseApp.add_teacher();
 
 CourseApp.add_course = function(e){
 	name = prompt('Whats your students name?');
-	courses.push(new CourseApp.Course(name));
+	this.courses.push(new CourseApp.Course(name));
 };
 
-CourseApp.add_course(e);
+CourseApp.add_course();
 
 CourseApp.add_student = function(e){
 
 	e = prompt('Whats your students name?');
-	students.push(new CourseApp.Student(name));
+	this.students.push(new CourseApp.Student(name));
 };
 
-CourseApp.add_student(e);
+CourseApp.add_student();
 
 
 
